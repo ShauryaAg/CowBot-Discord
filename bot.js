@@ -30,6 +30,11 @@ client.on('message', async function (message) {
             imageUrl = await getImage('cat')
             message.channel.send(imageUrl)
         }
+        else if (message.content.substr(0, 2) === `!r`) {
+            subreddit = message.content.substr(3)
+            imageUrl = await getImage(subreddit)
+            message.channel.send(imageUrl)
+        }
     } catch (err) {
         logger.error(err)
     }
