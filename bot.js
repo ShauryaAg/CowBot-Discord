@@ -32,7 +32,12 @@ client.on('message', async function (message) {
         }
         else if (message.content.substr(0, 2) === `!r`) {
             subreddit = message.content.substr(3)
-            imageUrl = await getImage(subreddit)
+            try {
+                imageUrl = await getImage(subreddit)
+            } catch (error) {
+                message.channel.send(`Invalid subreddit/No Images found for ${subreddit}`)
+                return
+            }
             message.channel.send(imageUrl)
         }
     } catch (err) {
