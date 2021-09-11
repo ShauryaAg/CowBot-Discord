@@ -15,7 +15,8 @@ const client = new Client({ intents: [Intents.FLAGS.GUILDS, Intents.FLAGS.GUILD_
 
 client.once('ready', function (evt) {
     logger.info('Connected')
-    logger.info(client.id)
+    logger.info(client.user.id)
+    client.user.setActivity('with my life')
 })
 
 client.on('message', async function (message) {
