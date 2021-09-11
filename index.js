@@ -1,3 +1,5 @@
+require('dotenv').config()
+
 const { Client, Intents } = require('discord.js')
 const winston = require('winston')
 const { getImage } = require('random-reddit')
@@ -45,4 +47,4 @@ client.on('message', async function (message) {
     }
 })
 
-client.login(token.token)
+client.login(process.env.token || token.token)
