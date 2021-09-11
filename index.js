@@ -4,8 +4,6 @@ const { Client, Intents } = require('discord.js')
 const winston = require('winston')
 const { getImage } = require('random-reddit')
 
-const token = require('./token.json')
-
 // Configure logger settings
 const logger = winston.createLogger({
     format: winston.format.simple(),
@@ -47,4 +45,4 @@ client.on('message', async function (message) {
     }
 })
 
-client.login(process.env.token || token.token)
+client.login(process.env.token)
