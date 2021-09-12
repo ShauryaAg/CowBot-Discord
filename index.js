@@ -47,17 +47,17 @@ client.on('message', async function (message) {
         } else if (message.content.substr(0, 2) === `!p`) {
             subreddit = message.content.substr(3)
             try {
-                postUrl = await getPost(subreddit)
+                post = await getPost(subreddit)
             } catch (error) {
                 message.channel.send(`Invalid subreddit/No Posts found for ${subreddit}`)
                 return
             }
             const embed = new MessageEmbed(
                 {
-                    title: `${postUrl?.crosspost_parent_list?.title || postUrl?.title}`,
-                    url: `https://reddit.com${postUrl?.permalink}`,
+                    title: `${post?.crosspost_parent_list?.title || post?.title}`,
+                    url: `https://reddit.com${post?.permalink}`,
                     image: {
-                        url: postUrl?.url
+                        url: post?.url
                     }
                 }
             )
