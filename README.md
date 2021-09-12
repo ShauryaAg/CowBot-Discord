@@ -12,6 +12,7 @@ Or actually pics from any subreddit.
 `bhature`: sends a bhature pic
 
 `!r <subreddit>`: sends a pic from the given subreddit
+
 `!p <subreddit>`: sends a post from the given subreddit
 
 ## Setup
