@@ -1,6 +1,6 @@
 require('dotenv').config()
 
-const { Client, Intents } = require('discord.js')
+const { Client, Intents, MessageEmbed } = require('discord.js')
 const winston = require('winston')
 const { getImage, getPost } = require('random-reddit')
 
@@ -47,12 +47,21 @@ client.on('message', async function (message) {
         } else if (message.content.substr(0, 2) === `!p`) {
             subreddit = message.content.substr(3)
             try {
-                imageUrl = await getPost(subreddit)
+                postUrl = await getPost(subreddit)
             } catch (error) {
-                message.channel.send(`Invalid subreddit/No Images found for ${subreddit}`)
+                message.channel.send(`Invalid subreddit/No Posts found for ${subreddit}`)
                 return
             }
-            message.channel.send(imageUrl)
+            const embed = new MessageEmbed(
+                {
+                    title: `${postUrl?.crosspost_parent_list?.title || postUrl?.title}`,
+                    url: `https://reddit.com${postUrl?.permalink}`,
+                    image: {
+                        url: postUrl?.url
+                    }
+                }
+            )
+            message.channel.send(embed)
         }
     } catch (err) {
         logger.error(err)
