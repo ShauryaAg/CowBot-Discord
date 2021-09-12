@@ -2,7 +2,7 @@ require('dotenv').config()
 
 const { Client, Intents } = require('discord.js')
 const winston = require('winston')
-const { getImage } = require('random-reddit')
+const { getImage, getPost } = require('random-reddit')
 
 // Configure logger settings
 const logger = winston.createLogger({
@@ -39,6 +39,15 @@ client.on('message', async function (message) {
             subreddit = message.content.substr(3)
             try {
                 imageUrl = await getImage(subreddit)
+            } catch (error) {
+                message.channel.send(`Invalid subreddit/No Images found for ${subreddit}`)
+                return
+            }
+            message.channel.send(imageUrl)
+        } else if (message.content.substr(0, 2) === `!p`) {
+            subreddit = message.content.substr(3)
+            try {
+                imageUrl = await getPost(subreddit)
             } catch (error) {
                 message.channel.send(`Invalid subreddit/No Images found for ${subreddit}`)
                 return
