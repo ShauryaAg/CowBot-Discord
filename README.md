@@ -9,7 +9,10 @@ Or actually pics from any subreddit.
 
 `chonk`: sends a cat pic
 
-`!r <subreddit>`: send a pic from the given subreddit
+`bhature`: sends a bhature pic
+
+`!r <subreddit>`: sends a pic from the given subreddit
+`!p <subreddit>`: sends a post from the given subreddit
 
 ## Setup
 
