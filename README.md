@@ -15,6 +15,14 @@ Or actually pics from any subreddit.
 
 `!p <subreddit>`: sends a post from the given subreddit
 
+#### Use CowBot in your discord:
+
+<p>
+  <a href="https://discordapp.com/oauth2/authorize?&client_id=885961599888805890&scope=bot&permissions=34816" >
+    <img alt="Discord" src="https://discord.com/assets/cb48d2a8d4991281d7a6a95d2f58195e.svg" width="100" />
+  </a>
+</p>
+
 ## Setup
 
 1. Generate a New Application for discord using `https://discord.com/developers/applications` and clicking `New Application`
