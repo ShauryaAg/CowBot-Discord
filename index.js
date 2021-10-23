@@ -31,6 +31,10 @@ client.on('message', async function (message) {
             imageUrl = await getImage('cat')
             message.channel.send(imageUrl)
         }
+        else if (message.content === `momos`) {
+            imageUrl = await getImage('dog')
+            message.channel.send(imageUrl)
+        }
         else if (message.content === `bhature`) {
             imageUrl = await getImage('bhature')
             message.channel.send(imageUrl)
