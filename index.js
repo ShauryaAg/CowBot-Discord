@@ -4,6 +4,13 @@ const { Client, Intents, MessageEmbed } = require('discord.js')
 const utils = require('./utils')
 const { getImage, getPost } = require('random-reddit')
 
+// Map of commands to their respective subreddits
+const map = new Map(Object.entries({
+    moo: `cow`,
+    chonk: `cat`,
+    momos: `dog`,
+    bhature: `bhature`,
+}))
 
 // Initialize Discord Bot
 const client = new Client({ intents: [Intents.FLAGS.GUILDS, Intents.FLAGS.GUILD_MESSAGES] })
@@ -18,20 +25,8 @@ client.on('message', async function (message) {
     console.log(message.content)
 
     try {
-        if (message.content === `moo`) {
-            imageUrl = await getImage('cow')
-            message.channel.send(imageUrl)
-        }
-        else if (message.content === `chonk`) {
-            imageUrl = await getImage('cat')
-            message.channel.send(imageUrl)
-        }
-        else if (message.content === `momos`) {
-            imageUrl = await getImage('dog')
-            message.channel.send(imageUrl)
-        }
-        else if (message.content === `bhature`) {
-            imageUrl = await getImage('bhature')
+        if (map.has(message.content)) {
+            imageUrl = await getImage(map.get(message.content))
             message.channel.send(imageUrl)
         }
         else if (message.content.substr(0, 2) === `!r`) {
