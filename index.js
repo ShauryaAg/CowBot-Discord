@@ -1,21 +1,16 @@
 require('dotenv').config()
 
 const { Client, Intents, MessageEmbed } = require('discord.js')
-const winston = require('winston')
+const utils = require('./utils')
 const { getImage, getPost } = require('random-reddit')
 
-// Configure logger settings
-const logger = winston.createLogger({
-    format: winston.format.simple(),
-    transports: [new winston.transports.Console()],
-})
 
 // Initialize Discord Bot
 const client = new Client({ intents: [Intents.FLAGS.GUILDS, Intents.FLAGS.GUILD_MESSAGES] })
 
 client.once('ready', function (evt) {
-    logger.info('Connected')
-    logger.info(client.user.id)
+    utils.logger.info('Connected')
+    utils.logger.info(client.user.id)
     client.user.setActivity('with my life')
 })
 
@@ -68,7 +63,7 @@ client.on('message', async function (message) {
             message.channel.send(embed)
         }
     } catch (err) {
-        logger.error(err)
+        utils.logger.error(err)
     }
 })
 
